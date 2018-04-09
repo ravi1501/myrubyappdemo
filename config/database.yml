@@ -1,0 +1,24 @@
+
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  encoding: unicode
+
+development:
+  <<: *default
+  database: myapp_dev
+  username: pgadminruby
+  password: password
+  host: localhost
+
+test:
+  <<: *default
+  database: myapp_test
+  username: pgadminruby
+  password: password
+  host: localhost
+
+production:
+  <<: *default
+  database: db/production.sqlite3
